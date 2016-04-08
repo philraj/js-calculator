@@ -33,6 +33,11 @@ function updateDisplay (e) {
 
 
 function handleEquals (e) {
+  if (displayingResult) {
+    $('.display').textContent = '';
+    return;
+  }
+
   var expression = $('.display').textContent;
 
   try {
