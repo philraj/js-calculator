@@ -61,8 +61,6 @@ function handleEquals () {
 
 
 function handleKey (e) {
-  console.log('keycode:', e.keyCode)
-
   if (e.shiftKey) {
     switch (e.keyCode) {
       case 56: // "*"

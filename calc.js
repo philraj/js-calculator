@@ -85,6 +85,7 @@ function valid (string) {
         // If this block is reached, it means a closing bracket with no
         // matching opening bracket was found. The expression is invalid.
         valid = false;
+        break;
       }
     }
   }
@@ -109,14 +110,7 @@ function skipBrackets (string, i) {
     bracketStack.push(')');
   }
   else if (string[i] === '(') {
-    if (bracketStack.length) {
-      bracketStack.pop();
-    }
-    else {
-      // If this block is reached, it means an opening bracket with no
-      // matching closing bracket was found. Throw an error.
-      throw new Error('Malformed expression!');
-    }
+    bracketStack.pop();
   }
 
   // if bracketStack is not empty, skip iteration
