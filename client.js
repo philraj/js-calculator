@@ -10,31 +10,38 @@ window.onload = function () {
     // equals button needs special behavior, so skip it
     if (buttons[i].value === '=') continue;
 
-    buttons[i].addEventListener('click', updateDisplay);
+    buttons[i].addEventListener('click', handleClick);
   }
 
   $('#equals').addEventListener('click', handleEquals);
 
-  window.addEventListener('keydown', handleKey);
+  window.addEventListener('keyup', handleKey);
 }
 
 
 
-function updateDisplay (e) {
+function handleClick (e) {
+  updateDisplay(e.target.value);
+}
+
+
+
+function updateDisplay (char) {
   if (displayingResult) {
     // if a result is on the display, replace the text
-    $('.display').textContent = e.target.value;
+    $('.display').textContent = char;
     displayingResult = false;
   }
   else {
     // otherwise, append to the text
-    $('.display').textContent += e.target.value;
+    $('.display').textContent += char;
   }
 }
 
 
 
-function handleEquals (e) {
+function handleEquals () {
+  // reset display when pressing equals a second time
   if (displayingResult) {
     $('.display').textContent = '';
     return;
@@ -55,5 +62,42 @@ function handleEquals (e) {
 
 
 function handleKey (e) {
-  console.log(e.keyCode);
+  if (e.shiftKey) {
+    switch (e.keyCode) {
+      case 56: // "*"
+        updateDisplay('*');
+        break;
+      case 57: // "("
+        updateDisplay('(');
+        break;
+      case 48: // ")"
+        updateDisplay(')');
+        break;
+      case 187: // "+"
+        updateDisplay('+');
+        break;
+    }
+  }
+  else {
+    if (e.keyCode >= 48 && e.keyCode <= 57) {
+      var num = String.fromCharCode(e.keyCode);
+      updateDisplay(num);
+    }
+    else {
+      switch (e.keyCode) {
+        case 13: // "enter"
+          handleEquals();
+          break;
+        case 187: // "+"
+          updateDisplay('+');
+          break;
+        case 189: // "-"
+          updateDisplay('-');
+          break;
+        case 191: // "/"
+          updateDisplay('/');
+          break;
+      }
+    }
+  }
 }
