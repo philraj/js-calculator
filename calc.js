@@ -1,6 +1,8 @@
 // keeps track of parentheses for bracket matching
 var bracketStack = [];
 
+
+// entry point, makes sure expression is valid before continuing
 function startParsing (string) {
   var result;
 
@@ -13,6 +15,8 @@ function startParsing (string) {
 
   return result;
 }
+
+
 
 function evaluate (string) {
   /* The expression has to be evaluated from right to left,
@@ -63,7 +67,7 @@ function stripBrackets (string) {
 }
 
 
-
+// checks if expression is malformed
 function valid (string) {
   var valid = true;
 
@@ -120,7 +124,7 @@ function skipBrackets (string, i) {
 
 
 function operateRecursive (string, i) {
-  // 0. get the operation from string[i] and store it in 'op'
+  // 0. get the operator from string[i] and store it in 'op'
   // 1. split the expression into left and right parts around position i
   // 2. evaluate each part recursively
   // 3. coerce each part into a number
@@ -144,6 +148,6 @@ function operateRecursive (string, i) {
   }
 }
 
-var expression = "200*3-(3*(5+5))-2/3";
+var expression = "200.6*3-(3.89*(5.5+5))-2/3";
 console.log('mine:', startParsing(expression));
 console.log('eval:', eval(expression));
