@@ -14,8 +14,7 @@ window.onload = function () {
   }
 
   $('#equals').addEventListener('click', handleEquals);
-
-  window.addEventListener('keyup', handleKey);
+  window.addEventListener('keydown', handleKey);
 }
 
 
@@ -62,6 +61,8 @@ function handleEquals () {
 
 
 function handleKey (e) {
+  e.preventDefault();
+
   if (e.shiftKey) {
     switch (e.keyCode) {
       case 56: // "*"
@@ -74,6 +75,9 @@ function handleKey (e) {
         updateDisplay(')');
         break;
       case 187: // "+"
+        updateDisplay('+');
+        break;
+      case 61: // "+" firefox
         updateDisplay('+');
         break;
     }
@@ -91,7 +95,13 @@ function handleKey (e) {
         case 187: // "+"
           updateDisplay('+');
           break;
+        case 61: // "+" firefox
+          updateDisplay('+');
+          break;
         case 189: // "-"
+          updateDisplay('-');
+          break;
+        case 173: // "-" firefox
           updateDisplay('-');
           break;
         case 191: // "/"
