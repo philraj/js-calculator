@@ -61,7 +61,7 @@ function handleEquals () {
 
 
 function handleKey (e) {
-  e.preventDefault();
+  console.log('keycode:', e.keyCode)
 
   if (e.shiftKey) {
     switch (e.keyCode) {
@@ -75,9 +75,7 @@ function handleKey (e) {
         updateDisplay(')');
         break;
       case 187: // "+"
-        updateDisplay('+');
-        break;
-      case 61: // "+" firefox
+      case 61:  // "+" firefox
         updateDisplay('+');
         break;
     }
@@ -87,25 +85,37 @@ function handleKey (e) {
       var num = String.fromCharCode(e.keyCode);
       updateDisplay(num);
     }
+    else if (e.keyCode >= 96 && e.keyCode <= 105) {
+      // handles keypad numbers
+      var num = (e.keyCode - 96).toString();
+      updateDisplay(num);
+    }
     else {
       switch (e.keyCode) {
         case 13: // "enter"
           handleEquals();
           break;
         case 187: // "+"
-          updateDisplay('+');
-          break;
-        case 61: // "+" firefox
+        case 61:  // "+" firefox
+        case 107: // "+" keypad
           updateDisplay('+');
           break;
         case 189: // "-"
+        case 173: // "-" firefox
+        case 109: // "-" keypad
           updateDisplay('-');
           break;
-        case 173: // "-" firefox
-          updateDisplay('-');
+        case 106: // "*" keypad
+          updateDisplay('*');
           break;
         case 191: // "/"
+        case 111: // "/" keypad
+          e.preventDefault(); // prevent FF 'quick find' from popping up
           updateDisplay('/');
+          break;
+        case 190: // "."
+        case 110: // "." keypad
+          updateDisplay('.');
           break;
       }
     }
