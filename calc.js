@@ -32,8 +32,10 @@ function evaluate (string) {
      of function calls, this ensures addition and subtraction are done
      as the last step. */
 
+  // strip end brackets if this is a bracket-enclosed expression
   string = stripBrackets(string);
 
+  // check for addition or subtraction...
   for (var i = string.length - 1; i >= 0; i--) {
     if (skipBrackets(string, i)) continue;
 
@@ -147,7 +149,3 @@ function operateRecursive (string, i) {
       return left / right;
   }
 }
-
-var expression = "200.6*3-(3.89*(5.5+5))-2/3";
-console.log('mine:', startParsing(expression));
-console.log('eval:', eval(expression));

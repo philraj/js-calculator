@@ -2,18 +2,20 @@ var $ = document.querySelector.bind(document);
 var $all = document.querySelectorAll.bind(document);
 var displayingResult = false;
 
-
+// set up event handlers
 window.onload = function () {
   var buttons = $all('button');
 
   for (var i = 0; i < buttons.length; i++) {
-    // equals button needs special behavior
+    // equals button needs special behavior, so skip it
     if (buttons[i].value === '=') continue;
 
     buttons[i].addEventListener('click', updateDisplay);
   }
 
   $('#equals').addEventListener('click', handleEquals);
+
+  window.addEventListener('keydown', handleKey);
 }
 
 
@@ -48,4 +50,10 @@ function handleEquals (e) {
     $('.display').textContent = e.toString();
     displayingResult = true;
   }
+}
+
+
+
+function handleKey (e) {
+  console.log(e.keyCode);
 }
