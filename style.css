@@ -1,6 +1,6 @@
-/** {
+/* * {
   border: 1px solid red;
-}*/
+} */
 
 html {
   box-sizing: border-box;
@@ -12,7 +12,7 @@ html {
 .calculator {
   background: #922;
   border-radius: 5px;
-  width: 380px;
+  width: 420px;
   margin: 0 auto;
   padding: 10px 0 10px 20px;
   box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.4);
@@ -24,7 +24,7 @@ html {
   background: white;
   border-radius: 3px;
   font-size: 1.2em;
-  width: 318px;
+  width: 363px;
   height: 1.2em;
   padding: 3px 10px;
   margin: 10px;
@@ -34,13 +34,76 @@ html {
 
 .numbers {
   display: inline-block;
-  width: 200px;
+  width: 210px;
   margin: 10px;
 }
 
 .ops {
   display: inline-block;
-  width: 135px;
+  float: right;
+  width: 150px;
+  vertical-align: top;
+  margin: 10px 0;
+}
+
+button {
+  color: #fff;
+  text-shadow: 0 0 2px white;
+  border-color: #EF5350;
+  background: #C62828;
+  width: 60px;
+  height: 60px;
+  font-size: 2em;
+  margin-bottom: 2px;
+  border-radius: 4px;
+}
+
+#equals {
+  width: 124px;
+}/* * {
+  border: 1px solid red;
+} */
+
+html {
+  box-sizing: border-box;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.calculator {
+  background: #922;
+  border-radius: 5px;
+  width: 420px;
+  margin: 0 auto;
+  padding: 10px 0 10px 20px;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.4);
+}
+
+.display {
+  display: inline-block;
+  vertical-align: middle;
+  background: white;
+  border-radius: 3px;
+  font-size: 1.2em;
+  width: 363px;
+  height: 1.2em;
+  padding: 3px 10px;
+  margin: 10px;
+  text-align: right;
+  overflow: hidden;
+}
+
+.numbers {
+  display: inline-block;
+  width: 210px;
+  margin: 10px;
+}
+
+.ops {
+  display: inline-block;
+  float: right;
+  width: 150px;
   vertical-align: top;
   margin: 10px 0;
 }
