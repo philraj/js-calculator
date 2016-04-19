@@ -34,7 +34,6 @@ function evaluate (string) {
 
   // strip end brackets if this is a bracket-enclosed expression
   string = stripBrackets(string);
-
   // check for addition or subtraction...
   for (var i = string.length - 1; i >= 0; i--) {
     if (skipBrackets(string, i)) continue;
@@ -60,20 +59,12 @@ function evaluate (string) {
 
 
 function stripBrackets (string) {
-  // if this is an expression enclosed by parentheses, strip them off
+  // if this is an expression enclosed by parentheses...
   if (string[0] === '(' && string[string.length - 1] === ')') {
-    var innerBrackets = false;
-
-    // ...unless any inner brackets are found, in which case just return
-    // the original string unchanged.
-    for (var i = 1; i < string.length - 1; i++) {
-      if (string[i] === '(' || string[i] === ')') {
-        innerBrackets = true;
-        break;
-      }
-    }
-    // only slice the string if no inner brackets were found
-    if (!innerBrackets) string = string.slice(1, -1);
+    // start by storing a stripped version of the expression...
+    var stripped = string.slice(1, -1);
+    // if the stripped string is a valid expression, make it the return value
+    if (valid(stripped)) string = stripped;
   }
 
   return string;
